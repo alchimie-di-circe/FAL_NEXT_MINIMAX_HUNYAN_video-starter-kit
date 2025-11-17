@@ -570,5 +570,406 @@ MIT License - see LICENSE file for details
 
 ---
 
+## ROADMAP TASKLIST
+
+> **🚨 CRITICAL RULE FOR ALL AI AGENTS:**
+>
+> **BEFORE starting any task:**
+> 1. Read this entire ROADMAP TASKLIST section carefully
+> 2. Understand what has been completed and what's in progress
+> 3. Check for any related tasks or dependencies
+> 4. Review the AGENTS.md file for development guidelines
+>
+> **AFTER completing any task:**
+> 1. Update this section with comprehensive details
+> 2. Mark your task status (Planned → In Progress → Completed)
+> 3. Document all changes made (files, features, UI, functionality)
+> 4. Link related PRs, issues, branches, and workflows
+> 5. Update timestamps and agent information
+> 6. Keep AGENTS.md roadmap in sync with this section
+>
+> This ensures all agents have complete context and prevents duplicate work.
+
+### Task Status Legend
+- 🟦 **Planned**: Task identified, not started
+- 🟨 **In Progress**: Currently being worked on
+- 🟩 **Completed**: Finished and merged
+- 🟥 **Blocked**: Waiting on dependencies or decisions
+
+---
+
+### Completed Tasks
+
+#### ✅ Initial Repository Setup
+- **Status**: 🟩 Completed
+- **Branch**: `claude/init-repo-018MtUJYv6Cf9mrMZmqDVZNr`
+- **PR**: _Pending creation_
+- **Issue**: N/A
+- **Completed**: 2025-11-17
+- **Agent**: Claude (Sonnet 4.5)
+
+**Changes Made**:
+- Created `CLAUDE.md` with comprehensive project documentation
+- Added LLM providers comparison (Claude, GPT-4, Gemini) with cost analysis
+- Documented 15+ AI models available in the platform
+- Listed 5 major use case categories
+- Detailed 20+ potential expansion features
+- Included development best practices and security considerations
+
+**Files Modified**:
+- `CLAUDE.md` (new, 574+ lines)
+
+**Functional Changes**:
+- No code changes, documentation only
+- Established foundation for AI agent collaboration
+
+**Related Workflows**: None yet
+
+---
+
+#### ✅ AGENTS.md Standard Implementation
+- **Status**: 🟩 Completed
+- **Branch**: `claude/init-repo-018MtUJYv6Cf9mrMZmqDVZNr`
+- **PR**: _Pending creation_
+- **Issue**: N/A
+- **Completed**: 2025-11-17
+- **Agent**: Claude (Sonnet 4.5)
+
+**Changes Made**:
+- Created `AGENTS.md` following OpenAI agents.md standard
+- Added Dev Environment Tips (setup, navigation, common commands)
+- Documented Testing Instructions (pre-commit, Husky, manual testing)
+- Defined PR Instructions (title format, description template, review checklist)
+- Established Branch Naming Convention
+- Created ROADMAP TASKLIST system for AI agent coordination
+- Added same ROADMAP TASKLIST to CLAUDE.md for consistency
+
+**Files Modified**:
+- `AGENTS.md` (new, 600+ lines)
+- `CLAUDE.md` (updated with ROADMAP section)
+
+**Functional Changes**:
+- No code changes, documentation only
+- Established systematic approach for tracking all AI agent work
+- Created mandatory workflow for agents to read/update roadmap
+- Both files now have synchronized roadmap tracking
+
+**Related Workflows**: None yet
+
+---
+
+### In Progress Tasks
+
+_No tasks currently in progress_
+
+---
+
+### Planned Tasks
+
+#### 🟦 Add GitHub Actions CI/CD Pipeline
+- **Status**: 🟦 Planned
+- **Priority**: High
+- **Estimated Effort**: Medium
+
+**Scope**:
+- Create `.github/workflows/ci.yml`
+- Run tests on PR and push to main
+- Include: build, lint, type-check
+- Test on Node 18 and 20
+- Add build status badge to README
+
+**Files to Create/Modify**:
+- `.github/workflows/ci.yml` (new)
+- `README.md` (add badge)
+
+---
+
+#### 🟦 Implement Advanced Timeline Features
+- **Status**: 🟦 Planned
+- **Priority**: High
+- **Estimated Effort**: Large
+
+**Scope**:
+- Multi-layer timeline with video compositing
+- Transitions between clips (fade, wipe, dissolve)
+- Keyframe animation for effects
+- Speed controls (slow-mo, time-lapse)
+- Trim and split functionality
+
+**Files to Create/Modify**:
+- `src/components/timeline/*` (multiple files)
+- `src/data/schema.ts` (add transition types)
+- `src/data/mutations.ts` (add transition operations)
+
+**UI Changes**: Major timeline UI overhaul
+
+---
+
+#### 🟦 Add AI-Powered Script-to-Video
+- **Status**: 🟦 Planned
+- **Priority**: High
+- **Estimated Effort**: Large
+
+**Scope**:
+1. User provides script or outline
+2. LLM (Claude/GPT-4) breaks down into scenes
+3. Generate prompts for each scene
+4. Auto-generate images/videos for scenes
+5. Add voiceover narration
+6. Add background music
+7. Compile into final video
+
+**Files to Create/Modify**:
+- `src/lib/script-to-video.ts` (new)
+- `src/components/script-editor.tsx` (new)
+- `src/app/api/script-analyze/route.ts` (new)
+- Add LLM API integration (Anthropic/OpenAI)
+
+**New Dependencies**:
+- `@anthropic-ai/sdk` or `openai`
+
+**Functional Changes**: Major new feature - automated video generation from scripts
+
+---
+
+#### 🟦 Template System Implementation
+- **Status**: 🟦 Planned
+- **Priority**: Medium
+- **Estimated Effort**: Medium
+
+**Scope**:
+- Pre-built templates for common use cases
+- Social media templates (TikTok, Instagram, YouTube)
+- Marketing templates (product launch, testimonial)
+- Educational templates (tutorial, course intro)
+- Template gallery UI
+
+**Files to Create/Modify**:
+- `src/data/templates.ts` (new)
+- `src/components/template-gallery.tsx` (new)
+- `src/data/schema.ts` (add template type)
+
+---
+
+#### 🟦 Add Text & Captions Support
+- **Status**: 🟦 Planned
+- **Priority**: Medium
+- **Estimated Effort**: Medium
+
+**Scope**:
+- Animated text overlays
+- Auto-generated captions (speech-to-text)
+- Subtitle tracks
+- Typography presets
+- Text animations (kinetic typography)
+
+**Files to Create/Modify**:
+- `src/components/text-overlay.tsx` (new)
+- `src/lib/speech-to-text.ts` (new)
+- `src/app/remotion/TextOverlay.tsx` (new)
+- `src/data/schema.ts` (add text track type)
+
+**New Dependencies**:
+- Speech-to-text API integration
+
+---
+
+#### 🟦 Video Effects & Filters
+- **Status**: 🟦 Planned
+- **Priority**: Medium
+- **Estimated Effort**: Medium
+
+**Scope**:
+- Color grading presets
+- Visual effects (blur, glow, vignette)
+- Particle effects
+- Green screen / chroma key
+- Image stabilization
+
+**Files to Create/Modify**:
+- `src/components/effects-panel.tsx` (new)
+- `src/lib/video-effects.ts` (new)
+- `src/app/remotion/Effects.tsx` (new)
+
+---
+
+#### 🟦 Add More AI Models
+- **Status**: 🟦 Planned
+- **Priority**: Medium
+- **Estimated Effort**: Small per model
+
+**Models to Add**:
+- Runway Gen-3 Alpha (high-quality video)
+- Pika Labs (creative effects)
+- Stable Video Diffusion (open-source)
+- AnimateDiff (character animation)
+- Sora (when available via API)
+
+**Files to Modify**:
+- `src/lib/fal.ts` (add to AVAILABLE_ENDPOINTS)
+- `CLAUDE.md` (document new models)
+
+---
+
+#### 🟦 Voice Cloning Integration
+- **Status**: 🟦 Planned
+- **Priority**: Low
+- **Estimated Effort**: Medium
+
+**Scope**:
+- ElevenLabs integration
+- Resemble.ai integration
+- Descript Overdub integration
+- Voice sample upload UI
+
+**Files to Create/Modify**:
+- `src/lib/voice-cloning.ts` (new)
+- `src/components/voice-clone-panel.tsx` (new)
+
+**New Dependencies**:
+- Provider SDKs
+
+---
+
+#### 🟦 Multi-User Collaboration
+- **Status**: 🟦 Planned
+- **Priority**: Low
+- **Estimated Effort**: Very Large
+
+**Scope**:
+- Real-time collaboration (WebSocket/Supabase Realtime)
+- User authentication (Clerk, Auth0, Supabase Auth)
+- Project sharing and permissions
+- Comment system on timeline
+- Version history
+
+**Files to Create/Modify**:
+- Major architectural changes
+- Database migration from IndexedDB to cloud DB
+- Auth system implementation
+- WebSocket server setup
+
+**Breaking Changes**: Yes - requires backend infrastructure
+
+---
+
+#### 🟦 Advanced Export Options
+- **Status**: 🟦 Planned
+- **Priority**: Medium
+- **Estimated Effort**: Medium
+
+**Scope**:
+- Multiple resolution presets (4K, 1080p, 720p, mobile)
+- Format options (MP4, WebM, MOV, GIF)
+- Compression settings
+- Watermark support
+- Batch export
+
+**Files to Create/Modify**:
+- `src/components/export-panel.tsx` (enhance)
+- `src/lib/video-export.ts` (new)
+- `src/app/api/export/route.ts` (new)
+
+---
+
+#### 🟦 Direct Social Media Publishing
+- **Status**: 🟦 Planned
+- **Priority**: Low
+- **Estimated Effort**: Large
+
+**Scope**:
+- YouTube (direct upload via API)
+- TikTok (via API)
+- Instagram (via Meta Graph API)
+- Twitter/X (video upload)
+- LinkedIn (video posts)
+
+**Files to Create/Modify**:
+- `src/lib/social-publishers/*.ts` (new)
+- `src/components/publish-panel.tsx` (new)
+- API integrations for each platform
+
+**New Dependencies**:
+- Platform SDKs
+- OAuth handling
+
+---
+
+### Blocked Tasks
+
+_No blocked tasks currently_
+
+---
+
+### Notes & Decisions
+
+**2025-11-17**:
+- Decided to follow OpenAI agents.md standard for AGENTS.md
+- Established ROADMAP TASKLIST as mandatory workflow for all AI agents
+- Using conventional commits format for PR titles
+- Synchronized roadmap tracking between AGENTS.md and CLAUDE.md
+
+**Architecture Decisions**:
+- Stick with IndexedDB for now (multi-user would require DB migration)
+- Prioritize single-user experience before collaboration features
+- Focus on AI model variety before advanced editing features
+
+**Cost Considerations**:
+- Document all AI model costs in CLAUDE.md
+- Consider cost calculator feature (Planned task above)
+- Monitor usage to recommend cost-effective models
+
+---
+
+### How to Update This Roadmap
+
+**For Completed Tasks**:
+```markdown
+#### ✅ Task Name
+- **Status**: 🟩 Completed
+- **Branch**: branch-name
+- **PR**: #123 or URL
+- **Issue**: #456 or URL
+- **Completed**: YYYY-MM-DD
+- **Agent**: Agent name/type
+
+**Changes Made**:
+- Detailed list of changes
+
+**Files Modified**:
+- List all files changed (with line count if significant)
+
+**Functional Changes**:
+- How does this change the app?
+- New features, refactors, bug fixes, etc.
+
+**UI Changes** (if applicable):
+- Screenshot or description
+
+**Related Workflows**:
+- Link to GitHub Actions, scripts, etc.
+```
+
+**For New Planned Tasks**:
+```markdown
+#### 🟦 Task Name
+- **Status**: 🟦 Planned
+- **Priority**: High/Medium/Low
+- **Estimated Effort**: Small/Medium/Large/Very Large
+
+**Scope**:
+- What needs to be done
+
+**Files to Create/Modify**:
+- List expected files
+
+**Dependencies** (if any):
+- What's needed first
+
+**Breaking Changes**: Yes/No
+```
+
+---
+
 **Last Updated**: 2025-11-17
-**Version**: 1.0.0
+**Version**: 1.1.0
