@@ -29,9 +29,24 @@ yarn-error.log*
 .env*.local
 .env
 
+# direnv (contains secrets - never commit!)
+.envrc
+.direnv/
+
 # vercel
 .vercel
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# DevContainer secrets and overrides
+.devcontainer/.env
+.devcontainer/docker-compose.override.yml
+
+# 1Password local config
+.op/
+
+# IDE
+.vscode/settings.json
+.idea/
