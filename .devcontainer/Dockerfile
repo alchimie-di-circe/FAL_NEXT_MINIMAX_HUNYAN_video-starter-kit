@@ -18,6 +18,16 @@ RUN curl -sL https://github.com/digitalocean/doctl/releases/download/v1.104.0/do
     && mv doctl /usr/local/bin/doctl \
     && chmod +x /usr/local/bin/doctl
 
+# Install Claude Code CLI
+# Download and install the latest version of Claude Code
+RUN curl -fsSL https://repo.claude.ai/install.sh | sh || \
+    (echo "Claude Code installation via script failed, trying alternative method..." && \
+     curl -L https://github.com/anthropics/claude-code/releases/latest/download/claude-code-linux-x64.tar.gz -o /tmp/claude-code.tar.gz && \
+     tar -xzf /tmp/claude-code.tar.gz -C /usr/local/bin && \
+     chmod +x /usr/local/bin/claude && \
+     rm /tmp/claude-code.tar.gz) || \
+    echo "Claude Code installation skipped - will need manual installation or authentication from host"
+
 # Switch to node user (already exists in base image)
 USER node
 

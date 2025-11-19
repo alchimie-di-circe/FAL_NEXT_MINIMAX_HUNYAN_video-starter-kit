@@ -353,20 +353,95 @@ doctl registry login
 
 ### Claude Code Integration
 
-The DevContainer mounts your `~/.claude` directory for persistent authentication.
+Claude Code is **pre-installed** in the DevContainer and automatically configured.
+
+#### Setup
+
+The DevContainer:
+- ✅ **Installs Claude Code** during container build
+- ✅ **Mounts `~/.claude`** from host for persistent authentication
+- ✅ **Preserves configuration** across container rebuilds
+
+#### First-Time Authentication
+
+If Claude Code is not authenticated, run:
+
+```bash
+# Inside DevContainer
+claude login
+```
+
+This will authenticate Claude Code and save credentials to `~/.claude` (which is mounted from your host).
 
 #### Usage
 
 ```bash
-# Inside DevContainer - Claude Code is already authenticated
+# Check version
 claude --version
 
 # Use Claude Code commands
 claude generate "Create a new component"
 claude review "Review this code"
+claude chat "How do I implement X?"
+
+# Get help
+claude --help
 ```
 
-Configuration is persistent across container rebuilds.
+#### Manual Installation (If Automatic Install Fails)
+
+If the automatic installation during container build fails, you can install manually:
+
+```bash
+# Option 1: Using npm (if available)
+npm install -g @anthropic-ai/claude-code
+
+# Option 2: Using installation script
+curl -fsSL https://repo.claude.ai/install.sh | sh
+
+# Option 3: Download binary directly
+curl -L https://github.com/anthropics/claude-code/releases/latest/download/claude-code-linux-x64.tar.gz -o /tmp/claude-code.tar.gz
+sudo tar -xzf /tmp/claude-code.tar.gz -C /usr/local/bin
+sudo chmod +x /usr/local/bin/claude
+rm /tmp/claude-code.tar.gz
+```
+
+#### Troubleshooting
+
+**Problem**: `claude: command not found`
+
+**Solutions**:
+```bash
+# 1. Check if Claude Code is installed
+which claude
+
+# 2. Verify PATH includes /usr/local/bin
+echo $PATH
+
+# 3. Manually add to PATH if needed
+export PATH="/usr/local/bin:$PATH"
+echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.bashrc
+
+# 4. Rebuild container without cache
+# VS Code: Cmd+Shift+P → "Dev Containers: Rebuild Container Without Cache"
+```
+
+**Problem**: Authentication issues
+
+**Solutions**:
+```bash
+# 1. Re-authenticate
+claude logout
+claude login
+
+# 2. Check mounted config
+ls -la ~/.claude
+
+# 3. Verify mount in devcontainer.json
+# Should have: "source=${localEnv:HOME}/.claude,target=/home/node/.claude,type=bind"
+```
+
+Configuration is persistent across container rebuilds via the mounted `~/.claude` directory.
 
 ### Vercel CLI
 
