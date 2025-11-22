@@ -34,7 +34,7 @@
       "extensions": [
         // Next.js / React
         "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode",
+        "biomejs.biome",
         "bradlc.vscode-tailwindcss",
         "dsznajder.es7-react-js-snippets",
 
