@@ -50,14 +50,12 @@ services:
     user: node
 
     # Resource limits (adjust as needed)
-    deploy:
-      resources:
-        limits:
-          cpus: '4'
-          memory: 8G
-        reservations:
-          cpus: '2'
-          memory: 4G
+    # Note: 'deploy.resources' is ignored outside Docker Swarm. For local dev limits,
+    # consider Docker Desktop settings or compose v2 fields like mem_limit/cpus.
+    # Example (if needed):
+    #    mem_limit: 8g
+    #    cpus: 4
+    # Keeping as-is for documentation, but do not rely on enforcement.
 
 networks:
   ai-video-network:
