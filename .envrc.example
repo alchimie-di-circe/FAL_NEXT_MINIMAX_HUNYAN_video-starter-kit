@@ -1,0 +1,104 @@
+# direnv configuration for AI Video Starter Kit
+# Copy this file to .envrc and fill in your actual values
+# Then run: direnv allow
+
+# ============================================
+# Required API Keys
+# ============================================
+
+# fal.ai API Key (required)
+# Get from: https://fal.ai/dashboard/keys
+export FAL_KEY="your-fal-api-key-here"
+
+# UploadThing Token (required for file uploads)
+# Get from: https://uploadthing.com/dashboard
+export UPLOADTHING_TOKEN="your-uploadthing-token-here"
+
+# ============================================
+# Optional: Vercel KV (for share functionality)
+# ============================================
+
+# Get from: https://vercel.com/dashboard/stores
+# export KV_URL="redis://..."
+# export KV_REST_API_READ_ONLY_TOKEN="..."
+# export KV_REST_API_TOKEN="..."
+# export KV_REST_API_URL="https://..."
+
+# ============================================
+# Optional: DigitalOcean
+# ============================================
+
+# DigitalOcean Personal Access Token
+# Get from: https://cloud.digitalocean.com/account/api/tokens
+# export DIGITALOCEAN_API_TOKEN="dop_v1_..."
+
+# ============================================
+# Development Environment
+# ============================================
+
+export NODE_ENV="development"
+
+# Next.js configuration
+# export NEXT_PUBLIC_API_URL="http://localhost:3000"
+
+# ============================================
+# 1Password CLI Integration (Alternative to direnv for production)
+# ============================================
+
+# Uncomment if using 1Password CLI to load secrets
+# See .devcontainer/README.md for setup instructions
+
+# Load from 1Password vault
+# export FAL_KEY=$(op read "op://Development/FAL_API/credential")
+# export UPLOADTHING_TOKEN=$(op read "op://Development/UploadThing/credential")
+# export DIGITALOCEAN_API_TOKEN=$(op read "op://Development/DigitalOcean/token")
+
+# ============================================
+# Helper Functions
+# ============================================
+
+# Check if required variables are set
+check_required_vars() {
+  local missing=()
+
+  if [ -z "$FAL_KEY" ]; then
+    missing+=("FAL_KEY")
+  fi
+
+  if [ -z "$UPLOADTHING_TOKEN" ]; then
+    missing+=("UPLOADTHING_TOKEN")
+  fi
+
+  if [ ${#missing[@]} -gt 0 ]; then
+    echo "⚠️  Missing required environment variables: ${missing[*]}"
+    echo "   Please set them in .envrc"
+    return 1
+  fi
+
+  echo "✅ All required environment variables are set"
+  return 0
+}
+
+# Run the check
+check_required_vars
+
+# ============================================
+# PATH modifications
+# ============================================
+
+# Add node_modules/.bin to PATH for easy access to project scripts
+PATH_add node_modules/.bin
+
+# ============================================
+# Development helpers
+# ============================================
+
+# Alias for common commands
+alias dev="npm run dev"
+alias build="npm run build"
+alias lint="npm run lint"
+alias format="npm run format"
+
+echo "🚀 AI Video Starter Kit environment loaded"
+echo "   Node.js: $(node --version)"
+echo "   npm: $(npm --version)"

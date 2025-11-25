@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+
+    volumes:
+      # Mount the workspace
+      - ..:/workspace:cached
+
+      # Mount direnv config (if exists on host)
+      - ~/.config/direnv:/home/node/.config/direnv:cached
+
+      # Mount Git config
+      - ~/.gitconfig:/home/node/.gitconfig:ro
+
+      # Persist bash history
+      - devcontainer-bash-history:/home/node/.bash_history_data
+
+    working_dir: /workspace
+
+    # Keep container running
+    command: sleep infinity
+
+    # Port mappings
+    ports:
+      - "3000:3000"  # Next.js dev server
+
+    # Environment variables from .env file
+    env_file:
+      - .env.devcontainer
+
+    environment:
+      # Next.js environment
+      - NODE_ENV=development
+
+      # Enable direnv
+      - DIRENV_LOG_FORMAT=
+
+      # DigitalOcean (from host environment)
+      - DIGITALOCEAN_API_TOKEN=${DIGITALOCEAN_API_TOKEN:-}
+
+    # Network configuration
+    networks:
+      - ai-video-network
+
+    # User and security
+    user: node
+
+    # Resource limits (adjust as needed)
+    # Note: 'deploy.resources' is ignored outside Docker Swarm. For local dev limits,
+    # consider Docker Desktop settings or compose v2 fields like mem_limit/cpus.
+    # Example (if needed):
+    #    mem_limit: 8g
+    #    cpus: 4
+    # Keeping as-is for documentation, but do not rely on enforcement.
+
+networks:
+  ai-video-network:
+    driver: bridge
+
+volumes:
+  devcontainer-bash-history:
+    driver: local
