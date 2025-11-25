@@ -42,7 +42,14 @@ RUN mkdir -p /home/node/.bash_history_data \
 
 # Configure bash history persistence
 RUN echo 'export HISTFILE=/home/node/.bash_history_data/.bash_history' >> /home/node/.bashrc \
-    && echo 'export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"' >> /home/node/.bashrc
+    && printf '\n# Persist history without duplicating PROMPT_COMMAND\n' >> /home/node/.bashrc \
+    && echo 'if [[ ":$PROMPT_COMMAND:" != *":history -a:"* ]]; then' >> /home/node/.bashrc \
+    && echo '  if [ -n "$PROMPT_COMMAND" ]; then' >> /home/node/.bashrc \
+    && echo '    PROMPT_COMMAND="history -a; $PROMPT_COMMAND"' >> /home/node/.bashrc \
+    && echo '  else' >> /home/node/.bashrc \
+    && echo '    PROMPT_COMMAND="history -a"' >> /home/node/.bashrc \
+    && echo '  fi' >> /home/node/.bashrc \
+    && echo 'fi' >> /home/node/.bashrc
 
 # Set working directory
 WORKDIR /workspace
